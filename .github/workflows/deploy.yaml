@@ -43,3 +43,5 @@ jobs:
             --platform managed \
             --region $REGION \
             --allow-unauthenticated
+            --build-service-account projects/new-project-460404/serviceAccounts/BUILD_SERVICE_ACCOUNT
+            

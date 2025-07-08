@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  PROJECT_ID: ultra-dominion-464010-e0
+  PROJECT_ID: new-project-460404
   SERVICE_ACCOUNT_EMAIL: github-actions@new-project-460404.iam.gserviceaccount.com
   REGION: us-central1
   REPO: hello-repo3
@@ -37,6 +37,11 @@ jobs:
 
       - name: Build and Deploy to Cloud Run
         run: |
-          gcloud storage ls
+          gcloud builds submit --tag $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/hello-app2
+          gcloud run deploy hello-app2 \
+            --image $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/hello-app2 \
+            --platform managed \
+            --region $REGION \
+            --allow-unauthenticated
             
             
